@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.env
+
+# macOS
+.DS_Store
+
+# Claude Code
+.claude/
+
+# OpenCV training artifacts
+*.yml
