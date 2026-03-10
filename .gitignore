@@ -13,3 +13,6 @@ venv/
 
 # OpenCV training artifacts
 *.yml
+
+# MediaPipe model files
+*.task

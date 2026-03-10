@@ -2,7 +2,7 @@ import cv2
 import pygame
 
 from detector.camera import Camera
-from detector.face_mesh import FaceMatcher
+from detector.pose_matcher import PoseMatcher
 from display.image_display import ImageDisplay
 
 
@@ -14,7 +14,7 @@ def main():
     pygame.mixer.music.play(-1)  # loop forever
 
     camera = Camera()
-    matcher = FaceMatcher(db_path="hangitup")
+    matcher = PoseMatcher(db_path="hangitup")
     display = ImageDisplay()
 
     while True:
