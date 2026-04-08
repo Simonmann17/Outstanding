@@ -1,5 +1,5 @@
-opencv-python
-mediapipe
-numpy
-scikit-learn
-pygame
+opencv-python==4.9.0.80
+mediapipe==0.10.14
+numpy==1.26.4
+scikit-learn==1.4.2
+pygame==2.5.2

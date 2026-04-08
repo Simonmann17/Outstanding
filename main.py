@@ -1,37 +1,43 @@
 import cv2
 import pygame
 
-from detector.camera import Camera
-from detector.pose_matcher import PoseMatcher
+from camera.camera import Camera
+from matcher.pose_matcher import PoseMatcher
 from display.image_display import ImageDisplay
 
 
 def main():
 
-    # initialize audio
+    camera = Camera()
+
+	# initialize audio
     pygame.mixer.init()
     pygame.mixer.music.load("audio/music.mp3")
     pygame.mixer.music.play(-1)  # loop forever
 
-    camera = Camera()
-    matcher = PoseMatcher(db_path="hangitup")
-    display = ImageDisplay()
+    matcher = PoseMatcher("hangitup")
+
+    display = ImageDisplay("hangitup")
 
     while True:
 
         frame = camera.get_frame()
+
         if frame is None:
+            print("Frame failed")
             break
 
-        match_path = matcher.update(frame)
-        display.show(frame, match_path)
+        match = matcher.match(frame)
 
-        # press ESC to exit
+        display.show(frame, match)
+
         if cv2.waitKey(1) & 0xFF == 27:
             break
 
     camera.release()
+    
     pygame.mixer.music.stop()
+    
     cv2.destroyAllWindows()
 
 
